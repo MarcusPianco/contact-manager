@@ -39,7 +39,8 @@ TextInputGroup.propTypes = {
 };
 
 TextInputGroup.defaultProps = {
-  type: "text"
+  type: "text",
+  error: ""
 };
 
 export default TextInputGroup;

@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./components/Pages/About";
 import NotFound from "./components/Pages/NotFound";
+import EditContact from "./components/Contact/EditContact";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Contacts} />
               <Route exact path="/contact/add" component={AddContact} />
+              <Route exact path="/contact/edit/:id" component={EditContact} />
               <Route exact path="/about" component={About} />
               <Route component={NotFound} />
             </Switch>

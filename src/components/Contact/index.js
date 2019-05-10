@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../Context";
-
+import { Link } from "react-router-dom";
 class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,17 @@ class Contact extends React.Component {
     });
   };
 
-  onDeleteClick = (id, dispatch) => {
+  onDeleteClick = async (id, dispatch) => {
+    await fetch("https://jsonplaceholder.typicode.com/users/" + id, {
+      method: "delete"
+    })
+      .then(() => {
+        dispatch({ type: "DELETE_CONTACT", payload: id });
+      })
+      .then(() => {
+        console.log("Delete Sucefully");
+      });
+
     dispatch({ type: "DELETE_CONTACT", payload: id });
   };
   render() {
@@ -39,6 +49,17 @@ class Contact extends React.Component {
                   className="fas fa-times"
                   style={{ cursor: "pointer", float: "right", color: "red" }}
                 />
+                <Link to={`contact/edit/${id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      cursor: "pointer",
+                      float: "right",
+                      color: "black",
+                      marginRight: "1rem"
+                    }}
+                  />
+                </Link>
               </h4>
               {showContactInfo ? (
                 <ul className="list-group">
