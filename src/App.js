@@ -5,7 +5,7 @@ import Header from "./components/Layout/Header";
 import { Provider } from "./Context";
 import AddContact from "./components/Contact/AddContact";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./components/Pages/About";
 import NotFound from "./components/Pages/NotFound";
 import EditContact from "./components/Contact/EditContact";
@@ -13,7 +13,7 @@ import EditContact from "./components/Contact/EditContact";
 const App = () => {
   return (
     <Provider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         {" "}
         <div className="App">
           <Header branding="Contcat manager" />
